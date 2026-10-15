@@ -640,6 +640,23 @@
             transform: translateY(-3px) scale(1.05);
             box-shadow: 0 10px 30px rgba(0,0,0,0.15);
         }
+        .heart-rain-drop {
+            position: fixed;
+            top: -48px;
+            z-index: 10001;
+            pointer-events: none;
+            will-change: transform, opacity;
+            animation: heartRainDrop var(--fall-duration) linear forwards;
+        }
+        @keyframes heartRainDrop {
+            0% { transform: translate3d(0, -5vh, 0) rotate(0); opacity: 0; }
+            12% { opacity: 0.95; }
+            85% { opacity: 0.9; }
+            100% {
+                transform: translate3d(var(--fall-drift), 110vh, 0) rotate(var(--fall-rotation));
+                opacity: 0;
+            }
+        }
 
         /* ===== FOOTER ===== */
         .footer {
@@ -746,6 +763,10 @@
                 animation-duration: 38s !important;
                 animation-iteration-count: infinite !important;
             }
+        }
+        .heart-rain-drop {
+            animation-duration: var(--fall-duration) !important;
+            animation-iteration-count: 1 !important;
         }
     </style>
 </head>
@@ -1094,30 +1115,21 @@
 
         // ===== HEART EXPLOSION ON CTA =====
         function createHeartExplosion() {
-            if (prefersReducedMotion) return;
-            for (let i = 0; i < 30; i++) {
-                setTimeout(() => {
-                    const heart = document.createElement('div');
-                    heart.style.cssText = `
-                        position: fixed;
-                        z-index: 99999;
-                        font-size: ${20 + Math.random() * 30}px;
-                        pointer-events: none;
-                        left: 50%;
-                        top: 50%;
-                        transition: all ${1 + Math.random() * 2}s ease-out;
-                        opacity: 1;
-                    `;
-                    heart.textContent = heartTypes[Math.floor(Math.random() * heartTypes.length)];
-                    document.body.appendChild(heart);
-                    requestAnimationFrame(() => {
-                        const angle = (Math.PI * 2 / 30) * i;
-                        const distance = 100 + Math.random() * 300;
-                        heart.style.transform = `translate(${Math.cos(angle) * distance}px, ${Math.sin(angle) * distance}px) scale(0) rotate(${Math.random() * 360}deg)`;
-                        heart.style.opacity = '0';
-                    });
-                    setTimeout(() => heart.remove(), 3000);
-                }, i * 50);
+            for (let i = 0; i < 36; i++) {
+                const heart = document.createElement('span');
+                const duration = 2.8 + Math.random() * 1.6;
+                heart.className = 'heart-rain-drop';
+                heart.setAttribute('aria-hidden', 'true');
+                heart.textContent = heartTypes[Math.floor(Math.random() * heartTypes.length)];
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.fontSize = 20 + Math.random() * 24 + 'px';
+                heart.style.animationDelay = Math.random() * 900 + 'ms';
+                heart.style.setProperty('--fall-duration', duration + 's');
+                heart.style.setProperty('--fall-drift', (Math.random() * 180 - 90) + 'px');
+                heart.style.setProperty('--fall-rotation', (Math.random() * 540 - 270) + 'deg');
+                heart.addEventListener('animationend', () => heart.remove(), { once: true });
+                document.body.appendChild(heart);
+                setTimeout(() => heart.remove(), duration * 1000 + 1200);
             }
         }
 
