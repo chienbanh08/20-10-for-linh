@@ -3,111 +3,87 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TechFlow — Giải pháp công nghệ hiện đại</title>
+    <title>💕 Happy 20/10 — Gửi người anh yêu</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <style>
-        /* ===== RESET & BASE ===== */
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            color: #1a1a2e;
+            font-family: 'Inter', sans-serif;
+            color: #3d2c2c;
             line-height: 1.6;
-            background: #fff;
+            background: #fff9f9;
             overflow-x: hidden;
         }
         a { text-decoration: none; color: inherit; }
         ul { list-style: none; }
-        img { max-width: 100%; display: block; }
 
-        /* ===== CSS VARIABLES ===== */
         :root {
-            --primary: #6c5ce7;
-            --primary-dark: #5a4bd1;
-            --primary-light: #a29bfe;
-            --accent: #00cec9;
-            --dark: #1a1a2e;
-            --gray: #636e72;
-            --light: #f8f9fa;
+            --rose: #e74c6f;
+            --rose-dark: #c73a5a;
+            --rose-light: #fce4ec;
+            --pink: #f48fb1;
+            --blush: #fff0f3;
+            --gold: #d4a574;
+            --gold-light: #f5e6d3;
+            --deep: #5c2434;
+            --text: #4a2c3d;
+            --text-light: #8b6976;
             --white: #ffffff;
-            --gradient: linear-gradient(135deg, #6c5ce7 0%, #00cec9 100%);
-            --shadow: 0 10px 40px rgba(108, 92, 231, 0.15);
-            --shadow-lg: 0 20px 60px rgba(108, 92, 231, 0.2);
-            --radius: 16px;
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --gradient: linear-gradient(135deg, #e74c6f 0%, #f48fb1 50%, #d4a574 100%);
+            --gradient-soft: linear-gradient(135deg, #fce4ec 0%, #fff0f3 50%, #f5e6d3 100%);
+            --shadow: 0 10px 40px rgba(231, 76, 111, 0.15);
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        /* ===== UTILITY ===== */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-        .section { padding: 100px 0; }
-        .section-label {
-            font-size: 14px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            color: var(--primary);
-            margin-bottom: 12px;
-        }
-        .section-title {
-            font-size: clamp(28px, 4vw, 42px);
-            font-weight: 800;
-            line-height: 1.2;
-            margin-bottom: 20px;
-            color: var(--dark);
-        }
-        .section-desc {
-            font-size: 18px;
-            color: var(--gray);
-            max-width: 600px;
-        }
-        .text-center { text-align: center; }
-        .mx-auto { margin-left: auto; margin-right: auto; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
 
-        /* ===== BUTTONS ===== */
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 14px 32px;
-            font-size: 16px;
-            font-weight: 600;
-            border-radius: 50px;
-            border: none;
-            cursor: pointer;
-            transition: var(--transition);
-            font-family: inherit;
+        /* ===== FALLING PETALS ===== */
+        .petals-container {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+            overflow: hidden;
         }
-        .btn-primary {
-            background: var(--gradient);
-            color: var(--white);
-            box-shadow: 0 4px 20px rgba(108, 92, 231, 0.4);
+        .petal {
+            position: absolute;
+            top: -60px;
+            opacity: 0.7;
+            animation: petalFall linear infinite;
+            pointer-events: none;
         }
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(108, 92, 231, 0.5);
+        @keyframes petalFall {
+            0% { transform: translateY(-10vh) rotate(0deg) translateX(0); opacity: 0.8; }
+            25% { transform: translateY(25vh) rotate(90deg) translateX(30px); }
+            50% { transform: translateY(50vh) rotate(180deg) translateX(-20px); opacity: 0.6; }
+            75% { transform: translateY(75vh) rotate(270deg) translateX(25px); }
+            100% { transform: translateY(110vh) rotate(360deg) translateX(-10px); opacity: 0; }
         }
-        .btn-outline {
-            background: transparent;
-            color: var(--primary);
-            border: 2px solid var(--primary-light);
+
+        /* ===== FLOATING HEARTS ===== */
+        .hearts-container {
+            position: fixed;
+            bottom: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 9998;
+            overflow: hidden;
         }
-        .btn-outline:hover {
-            background: var(--primary);
-            color: var(--white);
-            border-color: var(--primary);
+        .floating-heart {
+            position: absolute;
+            bottom: -30px;
+            font-size: 20px;
+            opacity: 0;
+            animation: floatHeart 8s ease-in infinite;
         }
-        .btn-white {
-            background: var(--white);
-            color: var(--primary);
-        }
-        .btn-white:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+        @keyframes floatHeart {
+            0% { transform: translateY(0) scale(0); opacity: 0; }
+            10% { opacity: 0.6; transform: translateY(-10vh) scale(1); }
+            50% { opacity: 0.4; }
+            100% { transform: translateY(-110vh) scale(0.5) rotate(30deg); opacity: 0; }
         }
 
         /* ===== NAVBAR ===== */
@@ -119,49 +95,29 @@
             transition: var(--transition);
         }
         .navbar.scrolled {
-            background: rgba(255,255,255,0.95);
+            background: rgba(255,249,249,0.95);
             backdrop-filter: blur(20px);
-            box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+            box-shadow: 0 2px 20px rgba(231,76,111,0.1);
             padding: 10px 0;
         }
-        .navbar .container {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
+        .navbar .container { display: flex; align-items: center; justify-content: space-between; }
         .logo {
-            font-size: 24px;
-            font-weight: 800;
+            font-family: 'Dancing Script', cursive;
+            font-size: 28px;
+            font-weight: 700;
             background: var(--gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 36px;
-        }
+        .nav-links { display: flex; align-items: center; gap: 32px; }
         .nav-links a {
-            font-size: 15px;
+            font-size: 14px;
             font-weight: 500;
-            color: var(--dark);
-            transition: var(--transition);
-            position: relative;
-        }
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -4px; left: 0;
-            width: 0; height: 2px;
-            background: var(--gradient);
+            color: var(--text);
             transition: var(--transition);
         }
-        .nav-links a:hover::after { width: 100%; }
-        .nav-cta { margin-left: 12px; }
-        .nav-cta .btn { padding: 10px 24px; font-size: 14px; }
-
-        /* Mobile menu */
+        .nav-links a:hover { color: var(--rose); }
         .mobile-toggle {
             display: none;
             flex-direction: column;
@@ -169,398 +125,346 @@
             background: none;
             border: none;
             cursor: pointer;
-            padding: 4px;
         }
-        .mobile-toggle span {
-            width: 24px; height: 2px;
-            background: var(--dark);
-            transition: var(--transition);
-        }
+        .mobile-toggle span { width: 24px; height: 2px; background: var(--text); transition: var(--transition); }
 
         /* ===== HERO ===== */
         .hero {
             min-height: 100vh;
             display: flex;
             align-items: center;
+            justify-content: center;
+            text-align: center;
             position: relative;
+            padding: 120px 24px 80px;
+            background: var(--gradient-soft);
             overflow: hidden;
-            padding-top: 80px;
         }
         .hero::before {
             content: '';
             position: absolute;
-            top: -50%; right: -20%;
-            width: 800px; height: 800px;
-            background: radial-gradient(circle, rgba(108,92,231,0.08) 0%, transparent 70%);
+            top: -200px; right: -200px;
+            width: 600px; height: 600px;
+            background: radial-gradient(circle, rgba(231,76,111,0.08) 0%, transparent 70%);
             border-radius: 50%;
         }
         .hero::after {
             content: '';
             position: absolute;
-            bottom: -30%; left: -10%;
-            width: 600px; height: 600px;
-            background: radial-gradient(circle, rgba(0,206,201,0.06) 0%, transparent 70%);
+            bottom: -150px; left: -150px;
+            width: 500px; height: 500px;
+            background: radial-gradient(circle, rgba(244,143,177,0.1) 0%, transparent 70%);
             border-radius: 50%;
         }
-        .hero .container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-            position: relative;
-            z-index: 1;
-        }
-        .hero-badge {
+        .hero-content { position: relative; z-index: 1; max-width: 750px; }
+        .hero-date {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: rgba(108,92,231,0.1);
-            color: var(--primary);
-            padding: 8px 20px;
+            background: rgba(231,76,111,0.1);
+            color: var(--rose);
+            padding: 10px 24px;
             border-radius: 50px;
-            font-size: 14px;
+            font-size: 15px;
             font-weight: 600;
+            margin-bottom: 32px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        .hero-emoji {
+            font-size: 72px;
             margin-bottom: 24px;
+            animation: heartbeat 1.5s ease-in-out infinite;
+        }
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            15% { transform: scale(1.15); }
+            30% { transform: scale(1); }
+            45% { transform: scale(1.1); }
+            60% { transform: scale(1); }
         }
         .hero-title {
-            font-size: clamp(36px, 5vw, 60px);
-            font-weight: 800;
-            line-height: 1.1;
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(36px, 6vw, 64px);
+            font-weight: 700;
+            line-height: 1.2;
             margin-bottom: 24px;
+            color: var(--deep);
         }
         .hero-title .highlight {
+            font-family: 'Dancing Script', cursive;
             background: var(--gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            font-size: 1.15em;
         }
-        .hero-desc {
-            font-size: 18px;
-            color: var(--gray);
+        .hero-subtitle {
+            font-size: 20px;
+            color: var(--text-light);
             margin-bottom: 40px;
             line-height: 1.8;
-        }
-        .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
-        .hero-stats {
-            display: flex;
-            gap: 40px;
-            margin-top: 48px;
-            padding-top: 32px;
-            border-top: 1px solid #eee;
-        }
-        .hero-stat h3 {
-            font-size: 32px;
-            font-weight: 800;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .hero-stat p { font-size: 14px; color: var(--gray); margin-top: 4px; }
-
-        /* Hero Visual */
-        .hero-visual {
-            position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .hero-card {
-            background: var(--white);
-            border-radius: 24px;
-            padding: 32px;
-            box-shadow: var(--shadow-lg);
-            width: 100%;
-            max-width: 460px;
-            position: relative;
-        }
-        .hero-card-header {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 20px;
-        }
-        .hero-card-dot {
-            width: 12px; height: 12px;
-            border-radius: 50%;
-        }
-        .hero-card-dot:nth-child(1) { background: #ff6b6b; }
-        .hero-card-dot:nth-child(2) { background: #feca57; }
-        .hero-card-dot:nth-child(3) { background: #48dbfb; }
-        .hero-card-chart {
-            display: flex;
-            align-items: flex-end;
-            gap: 12px;
-            height: 180px;
-            padding: 20px 0;
-        }
-        .chart-bar {
-            flex: 1;
-            border-radius: 8px 8px 0 0;
-            transition: var(--transition);
-            position: relative;
-        }
-        .chart-bar:nth-child(1) { background: var(--primary-light); height: 45%; }
-        .chart-bar:nth-child(2) { background: var(--primary); height: 70%; }
-        .chart-bar:nth-child(3) { background: var(--accent); height: 55%; }
-        .chart-bar:nth-child(4) { background: var(--primary); height: 85%; }
-        .chart-bar:nth-child(5) { background: var(--primary-light); height: 60%; }
-        .chart-bar:nth-child(6) { background: var(--accent); height: 90%; }
-        .chart-bar:nth-child(7) { background: var(--primary); height: 75%; }
-        .hero-card-label {
-            margin-top: 16px;
-            font-size: 14px;
-            color: var(--gray);
-        }
-        .hero-card-value {
-            font-size: 28px;
-            font-weight: 800;
-            color: var(--dark);
-        }
-        .hero-card-value .up {
-            color: #00b894;
-            font-size: 16px;
-            font-weight: 600;
-        }
-
-        /* Floating elements */
-        .float-card {
-            position: absolute;
-            background: var(--white);
-            border-radius: 16px;
-            padding: 16px 20px;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
-            animation: float 6s ease-in-out infinite;
-        }
-        .float-card-1 {
-            top: 20px; left: -40px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .float-icon {
-            width: 40px; height: 40px;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 18px;
-        }
-        .float-card-1 .float-icon { background: rgba(0,206,201,0.15); }
-        .float-card-1 .float-text { font-size: 13px; font-weight: 600; }
-        .float-card-1 .float-sub { font-size: 11px; color: var(--gray); }
-        .float-card-2 {
-            bottom: 40px; right: -30px;
-            animation-delay: -3s;
-        }
-        .float-card-2 .float-icon { background: rgba(108,92,231,0.15); }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-12px); }
-        }
-
-        /* ===== FEATURES ===== */
-        .features { background: var(--light); }
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 32px;
-            margin-top: 60px;
-        }
-        .feature-card {
-            background: var(--white);
-            border-radius: var(--radius);
-            padding: 40px 32px;
-            transition: var(--transition);
-            border: 1px solid transparent;
-        }
-        .feature-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow);
-            border-color: rgba(108,92,231,0.1);
-        }
-        .feature-icon {
-            width: 64px; height: 64px;
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 28px;
-            margin-bottom: 24px;
-        }
-        .feature-icon.purple { background: rgba(108,92,231,0.12); }
-        .feature-icon.teal { background: rgba(0,206,201,0.12); }
-        .feature-icon.orange { background: rgba(253,121,168,0.12); }
-        .feature-card h3 {
-            font-size: 20px;
-            font-weight: 700;
-            margin-bottom: 12px;
-        }
-        .feature-card p {
-            font-size: 15px;
-            color: var(--gray);
-            line-height: 1.7;
-        }
-
-        /* ===== HOW IT WORKS ===== */
-        .steps-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 40px;
-            margin-top: 60px;
-            position: relative;
-        }
-        .steps-grid::before {
-            content: '';
-            position: absolute;
-            top: 40px; left: 15%; right: 15%;
-            height: 2px;
-            background: var(--gradient);
-            opacity: 0.3;
-        }
-        .step-card { text-align: center; position: relative; }
-        .step-number {
-            width: 80px; height: 80px;
-            border-radius: 50%;
-            background: var(--gradient);
-            color: var(--white);
-            font-size: 28px;
-            font-weight: 800;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 24px;
-            position: relative;
-            z-index: 1;
-        }
-        .step-card h3 {
-            font-size: 20px;
-            font-weight: 700;
-            margin-bottom: 12px;
-        }
-        .step-card p {
-            font-size: 15px;
-            color: var(--gray);
-            line-height: 1.7;
-        }
-
-        /* ===== PRICING ===== */
-        .pricing { background: var(--light); }
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 32px;
-            margin-top: 60px;
-        }
-        .price-card {
-            background: var(--white);
-            border-radius: var(--radius);
-            padding: 40px 32px;
-            transition: var(--transition);
-            border: 2px solid transparent;
-            position: relative;
-        }
-        .price-card.popular {
-            border-color: var(--primary);
-            transform: scale(1.05);
-        }
-        .price-card.popular::before {
-            content: 'Phổ biến nhất';
-            position: absolute;
-            top: -14px; left: 50%;
-            transform: translateX(-50%);
-            background: var(--gradient);
-            color: var(--white);
-            padding: 4px 20px;
-            border-radius: 50px;
-            font-size: 13px;
-            font-weight: 600;
-        }
-        .price-card:hover { box-shadow: var(--shadow); }
-        .price-name {
-            font-size: 18px;
-            font-weight: 600;
-            color: var(--gray);
-            margin-bottom: 16px;
-        }
-        .price-amount {
-            font-size: 48px;
-            font-weight: 800;
-            color: var(--dark);
-            margin-bottom: 8px;
-        }
-        .price-amount span { font-size: 16px; font-weight: 400; color: var(--gray); }
-        .price-desc {
-            font-size: 14px;
-            color: var(--gray);
-            margin-bottom: 32px;
-            padding-bottom: 32px;
-            border-bottom: 1px solid #eee;
-        }
-        .price-features { margin-bottom: 32px; }
-        .price-features li {
-            padding: 8px 0;
-            font-size: 15px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .price-features li::before {
-            content: '✓';
-            width: 20px; height: 20px;
-            background: rgba(0,206,201,0.15);
-            color: var(--accent);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 12px;
-            font-weight: 700;
-            flex-shrink: 0;
-        }
-        .price-card .btn { width: 100%; justify-content: center; }
-
-        /* ===== TESTIMONIALS ===== */
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 32px;
-            margin-top: 60px;
-        }
-        .testimonial-card {
-            background: var(--white);
-            border-radius: var(--radius);
-            padding: 32px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
-            transition: var(--transition);
-        }
-        .testimonial-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
-        .testimonial-stars { color: #feca57; font-size: 18px; margin-bottom: 16px; }
-        .testimonial-text {
-            font-size: 15px;
-            line-height: 1.8;
-            color: #444;
-            margin-bottom: 24px;
             font-style: italic;
         }
-        .testimonial-author {
-            display: flex;
+        .hero-btn {
+            display: inline-flex;
             align-items: center;
-            gap: 12px;
-        }
-        .testimonial-avatar {
-            width: 48px; height: 48px;
-            border-radius: 50%;
+            gap: 10px;
+            padding: 16px 40px;
             background: var(--gradient);
-            display: flex;
-            align-items: center;
-            justify-content: center;
             color: var(--white);
-            font-weight: 700;
-            font-size: 18px;
+            font-size: 17px;
+            font-weight: 600;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 6px 25px rgba(231,76,111,0.4);
+            font-family: inherit;
         }
-        .testimonial-name { font-weight: 600; font-size: 15px; }
-        .testimonial-role { font-size: 13px; color: var(--gray); }
+        .hero-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 35px rgba(231,76,111,0.5);
+        }
+
+        /* ===== SECTION COMMON ===== */
+        .section { padding: 100px 0; }
+        .section-label {
+            font-family: 'Dancing Script', cursive;
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--rose);
+            margin-bottom: 8px;
+        }
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(28px, 4vw, 42px);
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 16px;
+            color: var(--deep);
+        }
+        .section-desc { font-size: 17px; color: var(--text-light); max-width: 600px; line-height: 1.8; }
+        .text-center { text-align: center; }
+        .mx-auto { margin-left: auto; margin-right: auto; }
+
+        /* ===== LOVE LETTER ===== */
+        .love-letter { background: var(--blush); }
+        .letter-card {
+            max-width: 700px;
+            margin: 50px auto 0;
+            background: var(--white);
+            border-radius: 24px;
+            padding: 50px 44px;
+            box-shadow: 0 15px 50px rgba(231,76,111,0.1);
+            position: relative;
+            border: 1px solid rgba(231,76,111,0.08);
+        }
+        .letter-card::before {
+            content: '💌';
+            position: absolute;
+            top: -20px; left: 50%;
+            transform: translateX(-50%);
+            font-size: 40px;
+        }
+        .letter-greeting {
+            font-family: 'Dancing Script', cursive;
+            font-size: 32px;
+            color: var(--rose);
+            margin-bottom: 24px;
+        }
+        .letter-body {
+            font-size: 16px;
+            line-height: 2;
+            color: var(--text);
+        }
+        .letter-body p { margin-bottom: 16px; }
+        .letter-sign {
+            font-family: 'Dancing Script', cursive;
+            font-size: 28px;
+            color: var(--rose);
+            margin-top: 32px;
+            text-align: right;
+        }
+
+        /* ===== REASONS I LOVE YOU ===== */
+        .reasons-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+            margin-top: 50px;
+        }
+        .reason-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 36px 28px;
+            text-align: center;
+            transition: var(--transition);
+            border: 1px solid rgba(231,76,111,0.06);
+            position: relative;
+            overflow: hidden;
+        }
+        .reason-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 4px;
+            background: var(--gradient);
+            transform: scaleX(0);
+            transition: var(--transition);
+        }
+        .reason-card:hover::before { transform: scaleX(1); }
+        .reason-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow);
+        }
+        .reason-emoji { font-size: 48px; margin-bottom: 20px; display: block; }
+        .reason-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--deep);
+        }
+        .reason-card p {
+            font-size: 15px;
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        /* ===== TIMELINE ===== */
+        .timeline-section { background: var(--blush); }
+        .timeline {
+            max-width: 650px;
+            margin: 50px auto 0;
+            position: relative;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 0; bottom: 0;
+            width: 3px;
+            background: var(--gradient);
+            border-radius: 3px;
+        }
+        .timeline-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 48px;
+            position: relative;
+        }
+        .timeline-item:nth-child(odd) { flex-direction: row-reverse; text-align: right; }
+        .timeline-item:nth-child(odd) .timeline-content { padding-right: 50px; padding-left: 0; }
+        .timeline-item:nth-child(even) .timeline-content { padding-left: 50px; }
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px; height: 20px;
+            background: var(--rose);
+            border-radius: 50%;
+            border: 4px solid var(--blush);
+            z-index: 1;
+            box-shadow: 0 0 0 4px rgba(231,76,111,0.2);
+        }
+        .timeline-content { width: 50%; }
+        .timeline-date {
+            font-family: 'Dancing Script', cursive;
+            font-size: 20px;
+            color: var(--rose);
+            margin-bottom: 8px;
+        }
+        .timeline-content h3 {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--deep);
+            margin-bottom: 8px;
+        }
+        .timeline-content p {
+            font-size: 14px;
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        /* ===== WISHES ===== */
+        .wishes-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin-top: 50px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .wish-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 32px;
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            transition: var(--transition);
+            border: 1px solid rgba(231,76,111,0.06);
+        }
+        .wish-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+        .wish-emoji {
+            font-size: 36px;
+            flex-shrink: 0;
+        }
+        .wish-card h3 {
+            font-size: 17px;
+            font-weight: 700;
+            color: var(--deep);
+            margin-bottom: 6px;
+        }
+        .wish-card p {
+            font-size: 14px;
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        /* ===== PHOTO/QUOTE GALLERY ===== */
+        .gallery { background: var(--blush); }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 50px;
+        }
+        .quote-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 36px 28px;
+            text-align: center;
+            transition: var(--transition);
+            position: relative;
+        }
+        .quote-card:hover { transform: translateY(-6px); box-shadow: var(--shadow); }
+        .quote-card .quote-icon {
+            font-size: 40px;
+            color: var(--rose-light);
+            margin-bottom: 16px;
+            display: block;
+            font-family: 'Playfair Display', serif;
+        }
+        .quote-card blockquote {
+            font-size: 15px;
+            font-style: italic;
+            color: var(--text);
+            line-height: 1.8;
+            margin-bottom: 16px;
+        }
+        .quote-card cite {
+            font-size: 13px;
+            color: var(--text-light);
+            font-style: normal;
+            font-weight: 600;
+        }
 
         /* ===== CTA ===== */
         .cta {
@@ -570,129 +474,145 @@
             position: relative;
             overflow: hidden;
         }
-        .cta::before {
+        .cta::before, .cta::after {
             content: '';
             position: absolute;
-            top: -100px; right: -100px;
-            width: 400px; height: 400px;
-            background: rgba(255,255,255,0.05);
             border-radius: 50%;
+            background: rgba(255,255,255,0.05);
         }
+        .cta::before { top: -100px; right: -100px; width: 400px; height: 400px; }
+        .cta::after { bottom: -80px; left: -80px; width: 300px; height: 300px; }
         .cta .section-title { color: var(--white); }
-        .cta .section-desc { color: rgba(255,255,255,0.85); margin: 0 auto 40px; }
-        .cta-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+        .cta .section-desc { color: rgba(255,255,255,0.9); margin: 0 auto 40px; }
+        .cta-heart {
+            font-size: 80px;
+            margin-bottom: 24px;
+            display: block;
+            animation: heartbeat 1.5s ease-in-out infinite;
+        }
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 40px;
+            background: var(--white);
+            color: var(--rose);
+            font-size: 17px;
+            font-weight: 700;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            font-family: inherit;
+        }
+        .cta-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
 
         /* ===== FOOTER ===== */
         .footer {
-            background: var(--dark);
+            background: var(--deep);
             color: rgba(255,255,255,0.7);
-            padding: 60px 0 30px;
+            padding: 40px 0;
+            text-align: center;
         }
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 40px;
-            margin-bottom: 40px;
+        .footer p { font-size: 14px; line-height: 1.8; }
+        .footer .footer-heart {
+            color: var(--rose);
+            animation: heartbeat 1.5s ease-in-out infinite;
+            display: inline-block;
         }
-        .footer-brand .logo { margin-bottom: 16px; }
-        .footer-brand p { font-size: 14px; line-height: 1.8; }
-        .footer-col h4 {
+        .footer .footer-logo {
+            font-family: 'Dancing Script', cursive;
+            font-size: 24px;
             color: var(--white);
-            font-size: 16px;
-            font-weight: 600;
-            margin-bottom: 20px;
+            margin-bottom: 12px;
         }
-        .footer-col a {
-            display: block;
-            font-size: 14px;
-            padding: 6px 0;
-            transition: var(--transition);
-        }
-        .footer-col a:hover { color: var(--white); padding-left: 4px; }
-        .footer-bottom {
-            border-top: 1px solid rgba(255,255,255,0.1);
-            padding-top: 24px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 14px;
-        }
-        .footer-socials { display: flex; gap: 16px; }
-        .footer-socials a {
-            width: 36px; height: 36px;
+
+        /* ===== MUSIC PLAYER ===== */
+        .music-toggle {
+            position: fixed;
+            bottom: 24px; right: 24px;
+            width: 56px; height: 56px;
+            background: var(--gradient);
+            border: none;
             border-radius: 50%;
-            background: rgba(255,255,255,0.1);
+            color: var(--white);
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 10000;
+            box-shadow: 0 4px 20px rgba(231,76,111,0.4);
+            transition: var(--transition);
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: var(--transition);
-            font-size: 14px;
         }
-        .footer-socials a:hover { background: var(--primary); color: var(--white); }
+        .music-toggle:hover { transform: scale(1.1); }
+        .music-toggle.playing { animation: musicPulse 1s ease-in-out infinite; }
+        @keyframes musicPulse {
+            0%, 100% { box-shadow: 0 4px 20px rgba(231,76,111,0.4); }
+            50% { box-shadow: 0 4px 30px rgba(231,76,111,0.7); }
+        }
 
-        /* ===== SCROLL ANIMATIONS ===== */
+        /* ===== SCROLL REVEAL ===== */
         .reveal {
             opacity: 0;
             transform: translateY(30px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
+            transition: opacity 0.7s ease, transform 0.7s ease;
         }
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        .reveal.active { opacity: 1; transform: translateY(0); }
 
         /* ===== RESPONSIVE ===== */
-        @media (max-width: 968px) {
-            .hero .container { grid-template-columns: 1fr; text-align: center; }
-            .hero-actions { justify-content: center; }
-            .hero-stats { justify-content: center; }
-            .hero-visual { margin-top: 40px; }
-            .features-grid, .steps-grid, .pricing-grid, .testimonials-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-            .steps-grid::before { display: none; }
-            .price-card.popular { transform: none; }
-            .footer-grid { grid-template-columns: 1fr 1fr; }
-        }
-        @media (max-width: 640px) {
+        @media (max-width: 768px) {
             .nav-links { display: none; }
             .mobile-toggle { display: flex; }
             .nav-links.active {
-                display: flex;
-                flex-direction: column;
-                position: absolute;
-                top: 100%; left: 0; right: 0;
-                background: var(--white);
-                padding: 24px;
+                display: flex; flex-direction: column;
+                position: absolute; top: 100%; left: 0; right: 0;
+                background: var(--white); padding: 24px;
                 box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-                border-radius: 0 0 16px 16px;
                 gap: 16px;
             }
-            .features-grid, .steps-grid, .pricing-grid, .testimonials-grid {
-                grid-template-columns: 1fr;
+            .reasons-grid, .gallery-grid { grid-template-columns: 1fr 1fr; }
+            .wishes-grid { grid-template-columns: 1fr; }
+            .timeline::before { left: 20px; }
+            .timeline-item, .timeline-item:nth-child(odd) {
+                flex-direction: row;
+                text-align: left;
             }
-            .hero-stats { flex-direction: column; gap: 16px; }
-            .footer-grid { grid-template-columns: 1fr; }
-            .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+            .timeline-dot { left: 20px; }
+            .timeline-item:nth-child(odd) .timeline-content,
+            .timeline-item:nth-child(even) .timeline-content {
+                padding-left: 56px;
+                padding-right: 0;
+                width: 100%;
+            }
+            .letter-card { padding: 36px 28px; }
             .section { padding: 60px 0; }
-            .float-card { display: none; }
+        }
+        @media (max-width: 480px) {
+            .reasons-grid, .gallery-grid { grid-template-columns: 1fr; }
+            .hero { padding: 100px 20px 60px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- ===== NAVBAR ===== -->
+    <!-- FALLING PETALS -->
+    <div class="petals-container" id="petalsContainer"></div>
+    <!-- FLOATING HEARTS -->
+    <div class="hearts-container" id="heartsContainer"></div>
+
+    <!-- NAVBAR -->
     <nav class="navbar" id="navbar">
         <div class="container">
-            <a href="#" class="logo">⚡ TechFlow</a>
+            <a href="#" class="logo">💕 For You</a>
             <div class="nav-links" id="navLinks">
-                <a href="#features">Tính năng</a>
-                <a href="#how-it-works">Cách hoạt động</a>
-                <a href="#pricing">Bảng giá</a>
-                <a href="#testimonials">Đánh giá</a>
-                <div class="nav-cta">
-                    <a href="#contact" class="btn btn-primary">Bắt đầu ngay</a>
-                </div>
+                <a href="#letter">Thư tình</a>
+                <a href="#reasons">Lý do yêu em</a>
+                <a href="#timeline">Kỷ niệm</a>
+                <a href="#wishes">Lời chúc</a>
             </div>
             <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
                 <span></span><span></span><span></span>
@@ -700,347 +620,249 @@
         </div>
     </nav>
 
-    <!-- ===== HERO ===== -->
+    <!-- HERO -->
     <section class="hero" id="hero">
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-badge">🚀 Phiên bản mới 2024</div>
-                <h1 class="hero-title">
-                    Giải pháp <span class="highlight">công nghệ</span> cho doanh nghiệp hiện đại
-                </h1>
-                <p class="hero-desc">
-                    Tối ưu quy trình, tăng năng suất và đưa doanh nghiệp của bạn lên tầm cao mới
-                    với nền tảng công nghệ thông minh hàng đầu Việt Nam.
-                </p>
-                <div class="hero-actions">
-                    <a href="#pricing" class="btn btn-primary">
-                        Dùng thử miễn phí →
-                    </a>
-                    <a href="#how-it-works" class="btn btn-outline">
-                        ▶ Xem demo
-                    </a>
-                </div>
-                <div class="hero-stats">
-                    <div class="hero-stat">
-                        <h3>10K+</h3>
-                        <p>Khách hàng tin dùng</p>
-                    </div>
-                    <div class="hero-stat">
-                        <h3>99.9%</h3>
-                        <p>Uptime đảm bảo</p>
-                    </div>
-                    <div class="hero-stat">
-                        <h3>24/7</h3>
-                        <p>Hỗ trợ kỹ thuật</p>
-                    </div>
-                </div>
-            </div>
-            <div class="hero-visual">
-                <div class="hero-card">
-                    <div class="hero-card-header">
-                        <div class="hero-card-dot"></div>
-                        <div class="hero-card-dot"></div>
-                        <div class="hero-card-dot"></div>
-                    </div>
-                    <div class="hero-card-chart">
-                        <div class="chart-bar"></div>
-                        <div class="chart-bar"></div>
-                        <div class="chart-bar"></div>
-                        <div class="chart-bar"></div>
-                        <div class="chart-bar"></div>
-                        <div class="chart-bar"></div>
-                        <div class="chart-bar"></div>
-                    </div>
-                    <div class="hero-card-label">Doanh thu tháng này</div>
-                    <div class="hero-card-value">
-                        2.4 tỷ VNĐ <span class="up">↑ 23%</span>
-                    </div>
-                </div>
-                <div class="float-card float-card-1">
-                    <div class="float-icon">📈</div>
-                    <div>
-                        <div class="float-text">+1,234 users</div>
-                        <div class="float-sub">Tuần này</div>
-                    </div>
-                </div>
-                <div class="float-card float-card-2">
-                    <div class="float-icon">🎯</div>
-                    <div>
-                        <div class="float-text">Mục tiêu đạt 95%</div>
-                        <div class="float-sub">Quý III/2024</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== FEATURES ===== -->
-    <section class="features section" id="features">
-        <div class="container">
-            <div class="text-center reveal">
-                <div class="section-label">Tính năng</div>
-                <h2 class="section-title">Tất cả những gì bạn cần trong một nền tảng</h2>
-                <p class="section-desc mx-auto">
-                    Được thiết kế tỉ mỉ để mang lại trải nghiệm tốt nhất cho doanh nghiệp của bạn
-                </p>
-            </div>
-            <div class="features-grid">
-                <div class="feature-card reveal">
-                    <div class="feature-icon purple">⚡</div>
-                    <h3>Tốc độ vượt trội</h3>
-                    <p>Hệ thống được tối ưu với công nghệ mới nhất, đảm bảo tốc độ xử lý nhanh gấp 10 lần so với giải pháp truyền thống.</p>
-                </div>
-                <div class="feature-card reveal">
-                    <div class="feature-icon teal">🔒</div>
-                    <h3>Bảo mật tuyệt đối</h3>
-                    <p>Mã hóa đầu cuối AES-256, xác thực đa yếu tố và tuân thủ tiêu chuẩn bảo mật quốc tế ISO 27001.</p>
-                </div>
-                <div class="feature-card reveal">
-                    <div class="feature-icon orange">📊</div>
-                    <h3>Phân tích thông minh</h3>
-                    <p>Báo cáo trực quan, dashboard real-time và dự đoán xu hướng bằng AI giúp bạn ra quyết định chính xác.</p>
-                </div>
-                <div class="feature-card reveal">
-                    <div class="feature-icon teal">🔗</div>
-                    <h3>Tích hợp linh hoạt</h3>
-                    <p>Kết nối dễ dàng với hơn 200+ ứng dụng phổ biến: Slack, Google Workspace, Microsoft 365, Salesforce...</p>
-                </div>
-                <div class="feature-card reveal">
-                    <div class="feature-icon purple">🤖</div>
-                    <h3>Tự động hóa AI</h3>
-                    <p>Workflow tự động thông minh giúp giảm 80% công việc thủ công lặp đi lặp lại, tiết kiệm thời gian đáng kể.</p>
-                </div>
-                <div class="feature-card reveal">
-                    <div class="feature-icon orange">📱</div>
-                    <h3>Đa nền tảng</h3>
-                    <p>Sử dụng mọi lúc mọi nơi trên Web, iOS, Android. Đồng bộ dữ liệu real-time giữa các thiết bị.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== HOW IT WORKS ===== -->
-    <section class="section" id="how-it-works">
-        <div class="container">
-            <div class="text-center reveal">
-                <div class="section-label">Cách hoạt động</div>
-                <h2 class="section-title">Bắt đầu chỉ với 3 bước đơn giản</h2>
-                <p class="section-desc mx-auto">
-                    Không cần kiến thức kỹ thuật, chỉ mất vài phút để thiết lập và bắt đầu sử dụng
-                </p>
-            </div>
-            <div class="steps-grid">
-                <div class="step-card reveal">
-                    <div class="step-number">1</div>
-                    <h3>Đăng ký tài khoản</h3>
-                    <p>Tạo tài khoản miễn phí chỉ với email. Không cần thẻ tín dụng, không ràng buộc.</p>
-                </div>
-                <div class="step-card reveal">
-                    <div class="step-number">2</div>
-                    <h3>Cấu hình hệ thống</h3>
-                    <p>Tùy chỉnh theo nhu cầu với giao diện kéo thả trực quan. Hướng dẫn từng bước chi tiết.</p>
-                </div>
-                <div class="step-card reveal">
-                    <div class="step-number">3</div>
-                    <h3>Bắt đầu sử dụng</h3>
-                    <p>Mời nhân viên tham gia và tận hưởng hiệu suất vượt trội ngay lập tức.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== PRICING ===== -->
-    <section class="pricing section" id="pricing">
-        <div class="container">
-            <div class="text-center reveal">
-                <div class="section-label">Bảng giá</div>
-                <h2 class="section-title">Gói dịch vụ phù hợp mọi quy mô</h2>
-                <p class="section-desc mx-auto">
-                    Bắt đầu miễn phí, nâng cấp khi doanh nghiệp bạn phát triển
-                </p>
-            </div>
-            <div class="pricing-grid">
-                <div class="price-card reveal">
-                    <div class="price-name">Starter</div>
-                    <div class="price-amount">Miễn phí</div>
-                    <div class="price-desc">Hoàn hảo cho cá nhân và nhóm nhỏ bắt đầu</div>
-                    <ul class="price-features">
-                        <li>Tối đa 5 thành viên</li>
-                        <li>5GB lưu trữ đám mây</li>
-                        <li>Báo cáo cơ bản</li>
-                        <li>Hỗ trợ qua email</li>
-                    </ul>
-                    <a href="#contact" class="btn btn-outline">Bắt đầu miễn phí</a>
-                </div>
-                <div class="price-card popular reveal">
-                    <div class="price-name">Business</div>
-                    <div class="price-amount">499K<span>/tháng</span></div>
-                    <div class="price-desc">Dành cho doanh nghiệp đang phát triển</div>
-                    <ul class="price-features">
-                        <li>Tối đa 50 thành viên</li>
-                        <li>100GB lưu trữ đám mây</li>
-                        <li>Phân tích AI nâng cao</li>
-                        <li>Tích hợp API không giới hạn</li>
-                        <li>Hỗ trợ 24/7 qua chat</li>
-                    </ul>
-                    <a href="#contact" class="btn btn-primary">Dùng thử 14 ngày</a>
-                </div>
-                <div class="price-card reveal">
-                    <div class="price-name">Enterprise</div>
-                    <div class="price-amount">Liên hệ</div>
-                    <div class="price-desc">Giải pháp tùy chỉnh cho tổ chức lớn</div>
-                    <ul class="price-features">
-                        <li>Không giới hạn thành viên</li>
-                        <li>Lưu trữ không giới hạn</li>
-                        <li>Server riêng (On-premise)</li>
-                        <li>SLA 99.99% cam kết</li>
-                        <li>Account Manager chuyên trách</li>
-                    </ul>
-                    <a href="#contact" class="btn btn-outline">Liên hệ tư vấn</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== TESTIMONIALS ===== -->
-    <section class="section" id="testimonials">
-        <div class="container">
-            <div class="text-center reveal">
-                <div class="section-label">Đánh giá</div>
-                <h2 class="section-title">Khách hàng nói gì về chúng tôi</h2>
-                <p class="section-desc mx-auto">
-                    Hơn 10,000 doanh nghiệp đã tin tưởng sử dụng TechFlow
-                </p>
-            </div>
-            <div class="testimonials-grid">
-                <div class="testimonial-card reveal">
-                    <div class="testimonial-stars">★★★★★</div>
-                    <p class="testimonial-text">
-                        "TechFlow đã thay đổi hoàn toàn cách chúng tôi vận hành. Năng suất tăng 40% chỉ sau 2 tháng sử dụng. Đội ngũ hỗ trợ rất chuyên nghiệp."
-                    </p>
-                    <div class="testimonial-author">
-                        <div class="testimonial-avatar">NT</div>
-                        <div>
-                            <div class="testimonial-name">Nguyễn Thanh</div>
-                            <div class="testimonial-role">CEO — FPT Software</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-card reveal">
-                    <div class="testimonial-stars">★★★★★</div>
-                    <p class="testimonial-text">
-                        "Giao diện trực quan, dễ sử dụng. Nhân viên của tôi chỉ mất 30 phút để làm quen. Chi phí tiết kiệm hơn 60% so với giải pháp cũ."
-                    </p>
-                    <div class="testimonial-author">
-                        <div class="testimonial-avatar">LH</div>
-                        <div>
-                            <div class="testimonial-name">Lê Hương</div>
-                            <div class="testimonial-role">CTO — Tiki Corporation</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-card reveal">
-                    <div class="testimonial-stars">★★★★★</div>
-                    <p class="testimonial-text">
-                        "Tính năng tự động hóa AI thật sự ấn tượng. Chúng tôi đã giảm được 80% công việc thủ công và tập trung vào phát triển chiến lược."
-                    </p>
-                    <div class="testimonial-author">
-                        <div class="testimonial-avatar">PD</div>
-                        <div>
-                            <div class="testimonial-name">Phạm Đức</div>
-                            <div class="testimonial-role">VP Engineering — VNG</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== CTA ===== -->
-    <section class="cta" id="contact">
-        <div class="container reveal">
-            <h2 class="section-title">Sẵn sàng nâng tầm doanh nghiệp?</h2>
-            <p class="section-desc">
-                Tham gia cùng hơn 10,000 doanh nghiệp đã tin tưởng TechFlow.
-                Bắt đầu miễn phí ngay hôm nay, không cần thẻ tín dụng.
+        <div class="hero-content">
+            <div class="hero-date">🌹 Ngày Phụ nữ Việt Nam — 20/10</div>
+            <div class="hero-emoji">💝</div>
+            <h1 class="hero-title">
+                Gửi đến <span class="highlight">người anh yêu</span> nhất
+            </h1>
+            <p class="hero-subtitle">
+                "Em là điều tuyệt vời nhất đã đến trong cuộc đời anh.<br>
+                Chúc em ngày 20/10 thật hạnh phúc và rạng rỡ!"
             </p>
-            <div class="cta-actions">
-                <a href="#" class="btn btn-white">🚀 Bắt đầu miễn phí</a>
-                <a href="#" class="btn btn-outline" style="color: white; border-color: rgba(255,255,255,0.4);">
-                    📞 Liên hệ tư vấn
-                </a>
+            <a href="#letter" class="hero-btn">💌 Đọc thư tình của anh</a>
+        </div>
+    </section>
+
+    <!-- LOVE LETTER -->
+    <section class="love-letter section" id="letter">
+        <div class="container">
+            <div class="text-center reveal">
+                <div class="section-label">Từ tận đáy lòng</div>
+                <h2 class="section-title">Lá thư anh viết cho em 💌</h2>
+            </div>
+            <div class="letter-card reveal">
+                <div class="letter-greeting">Em yêu của anh,</div>
+                <div class="letter-body">
+                    <p>Nhân ngày 20/10 — Ngày Phụ nữ Việt Nam, anh muốn dành những lời chân thành nhất gửi đến em — người con gái đặc biệt nhất trong cuộc đời anh.</p>
+                    <p>Cảm ơn em đã luôn ở bên anh, trong những ngày nắng đẹp lẫn những ngày mưa bão. Cảm ơn em vì mỗi nụ cười, mỗi cái nắm tay, mỗi khoảnh khắc bên nhau — tất cả đều là những món quà vô giá mà anh trân trọng.</p>
+                    <p>Em không cần phải hoàn hảo, vì với anh, em đã là tất cả. Em là bình yên giữa những bộn bề, là niềm vui giữa những muộn phiền, là động lực để anh cố gắng mỗi ngày.</p>
+                    <p>Anh chúc em ngày 20/10 thật nhiều niềm vui, thật nhiều yêu thương. Hôm nay và mãi mãi, anh sẽ luôn yêu em! 💕</p>
+                </div>
+                <div class="letter-sign">Mãi yêu em, Anh ❤️</div>
             </div>
         </div>
     </section>
 
-    <!-- ===== FOOTER ===== -->
+    <!-- REASONS I LOVE YOU -->
+    <section class="section" id="reasons">
+        <div class="container">
+            <div class="text-center reveal">
+                <div class="section-label">Vì sao ư?</div>
+                <h2 class="section-title">Những lý do anh yêu em 💗</h2>
+                <p class="section-desc mx-auto">Có hàng triệu lý do, nhưng đây là vài lý do đặc biệt nhất...</p>
+            </div>
+            <div class="reasons-grid">
+                <div class="reason-card reveal">
+                    <span class="reason-emoji">😊</span>
+                    <h3>Nụ cười của em</h3>
+                    <p>Chỉ cần thấy em cười, mọi mệt mỏi trong anh đều tan biến. Nụ cười em là ánh nắng đẹp nhất.</p>
+                </div>
+                <div class="reason-card reveal">
+                    <span class="reason-emoji">💪</span>
+                    <h3>Em rất mạnh mẽ</h3>
+                    <p>Em luôn kiên cường đối mặt với mọi thử thách. Sự mạnh mẽ của em khiến anh ngưỡng mộ và tự hào.</p>
+                </div>
+                <div class="reason-card reveal">
+                    <span class="reason-emoji">🤗</span>
+                    <h3>Sự ấm áp</h3>
+                    <p>Em luôn biết cách khiến mọi người xung quanh cảm thấy được yêu thương và quan tâm.</p>
+                </div>
+                <div class="reason-card reveal">
+                    <span class="reason-emoji">✨</span>
+                    <h3>Em là chính em</h3>
+                    <p>Anh yêu em vì em không cố gắng trở thành ai khác. Em đẹp nhất khi là chính mình.</p>
+                </div>
+                <div class="reason-card reveal">
+                    <span class="reason-emoji">🎯</span>
+                    <h3>Sự cố gắng</h3>
+                    <p>Em luôn nỗ lực hết mình trong mọi việc. Tinh thần ấy truyền cảm hứng cho anh mỗi ngày.</p>
+                </div>
+                <div class="reason-card reveal">
+                    <span class="reason-emoji">💕</span>
+                    <h3>Vì em là em</h3>
+                    <p>Không cần lý do cụ thể. Chỉ đơn giản vì em là em — và anh yêu tất cả mọi thứ ở em.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TIMELINE -->
+    <section class="timeline-section section" id="timeline">
+        <div class="container">
+            <div class="text-center reveal">
+                <div class="section-label">Hành trình của chúng mình</div>
+                <h2 class="section-title">Những kỷ niệm đáng nhớ 📸</h2>
+                <p class="section-desc mx-auto">Mỗi khoảnh khắc bên em đều là một kỷ niệm anh muốn giữ mãi</p>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">Ngày đầu tiên 🌸</div>
+                        <h3>Lần đầu gặp em</h3>
+                        <p>Anh vẫn nhớ cảm giác hôm đó — trái tim đập nhanh hơn, thế giới bỗng đẹp hơn khi có em.</p>
+                    </div>
+                </div>
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">Ngày đặc biệt 💑</div>
+                        <h3>Chính thức bên nhau</h3>
+                        <p>Ngày anh nói "Anh yêu em" và em gật đầu — khoảnh khắc đẹp nhất cuộc đời anh.</p>
+                    </div>
+                </div>
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">Mỗi ngày 🌈</div>
+                        <h3>Những ngày bên nhau</h3>
+                        <p>Cùng nhau ăn, cùng nhau đi dạo, cùng nhau cười — những điều giản dị nhưng hạnh phúc nhất.</p>
+                    </div>
+                </div>
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">Hôm nay & Mãi mãi 💍</div>
+                        <h3>20/10 — Ngày của em</h3>
+                        <p>Và anh sẽ luôn ở đây, yêu em, bảo vệ em, đi cùng em trên mọi chặng đường phía trước.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- QUOTES -->
+    <section class="gallery section" id="quotes">
+        <div class="container">
+            <div class="text-center reveal">
+                <div class="section-label">Yêu thương</div>
+                <h2 class="section-title">Những lời yêu dành cho em 🌹</h2>
+            </div>
+            <div class="gallery-grid">
+                <div class="quote-card reveal">
+                    <span class="quote-icon">"</span>
+                    <blockquote>Em là giấc mơ đẹp nhất mà anh không bao giờ muốn tỉnh dậy.</blockquote>
+                    <cite>— Từ trái tim anh 💗</cite>
+                </div>
+                <div class="quote-card reveal">
+                    <span class="quote-icon">"</span>
+                    <blockquote>Nếu được chọn lại, anh vẫn sẽ chọn em — trong mọi kiếp, mọi đời.</blockquote>
+                    <cite>— Anh nói thật đấy 🥰</cite>
+                </div>
+                <div class="quote-card reveal">
+                    <span class="quote-icon">"</span>
+                    <blockquote>Em không phải là cả thế giới, nhưng em là tất cả những gì anh cần trong thế giới này.</blockquote>
+                    <cite>— Mãi yêu em ❤️</cite>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WISHES -->
+    <section class="section" id="wishes">
+        <div class="container">
+            <div class="text-center reveal">
+                <div class="section-label">Lời chúc</div>
+                <h2 class="section-title">Anh chúc em 🎀</h2>
+                <p class="section-desc mx-auto">Những điều tốt đẹp nhất xứng đáng thuộc về em</p>
+            </div>
+            <div class="wishes-grid">
+                <div class="wish-card reveal">
+                    <span class="wish-emoji">🌸</span>
+                    <div>
+                        <h3>Luôn xinh đẹp</h3>
+                        <p>Chúc em mãi rạng rỡ, tươi tắn như đóa hoa đẹp nhất mùa xuân.</p>
+                    </div>
+                </div>
+                <div class="wish-card reveal">
+                    <span class="wish-emoji">😄</span>
+                    <div>
+                        <h3>Mãi hạnh phúc</h3>
+                        <p>Chúc nụ cười luôn nở trên môi em, mỗi ngày đều tràn ngập niềm vui.</p>
+                    </div>
+                </div>
+                <div class="wish-card reveal">
+                    <span class="wish-emoji">💪</span>
+                    <div>
+                        <h3>Thật khỏe mạnh</h3>
+                        <p>Chúc em luôn mạnh khỏe, tràn đầy năng lượng để chinh phục mọi ước mơ.</p>
+                    </div>
+                </div>
+                <div class="wish-card reveal">
+                    <span class="wish-emoji">⭐</span>
+                    <div>
+                        <h3>Thành công rực rỡ</h3>
+                        <p>Chúc mọi dự định của em đều thành hiện thực, mọi nỗ lực đều được đền đáp.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+        <div class="container reveal">
+            <span class="cta-heart">💖</span>
+            <h2 class="section-title">Happy 20/10, em yêu!</h2>
+            <p class="section-desc">
+                Cảm ơn em đã đến bên anh và khiến cuộc sống trở nên ý nghĩa hơn bao giờ hết.
+                Anh yêu em — hôm nay, ngày mai và mãi mãi! 🌹
+            </p>
+            <button class="cta-btn" onclick="createHeartExplosion()">
+                💕 Nhấn để nhận trái tim
+            </button>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
     <footer class="footer">
         <div class="container">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <div class="logo">⚡ TechFlow</div>
-                    <p>Giải pháp công nghệ hàng đầu cho doanh nghiệp hiện đại. Tối ưu quy trình, tăng năng suất, mở rộng không giới hạn.</p>
-                </div>
-                <div class="footer-col">
-                    <h4>Sản phẩm</h4>
-                    <a href="#">Tính năng</a>
-                    <a href="#">Bảng giá</a>
-                    <a href="#">Tích hợp</a>
-                    <a href="#">Cập nhật</a>
-                </div>
-                <div class="footer-col">
-                    <h4>Công ty</h4>
-                    <a href="#">Về chúng tôi</a>
-                    <a href="#">Blog</a>
-                    <a href="#">Tuyển dụng</a>
-                    <a href="#">Liên hệ</a>
-                </div>
-                <div class="footer-col">
-                    <h4>Hỗ trợ</h4>
-                    <a href="#">Trung tâm trợ giúp</a>
-                    <a href="#">Tài liệu API</a>
-                    <a href="#">Điều khoản</a>
-                    <a href="#">Bảo mật</a>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>© 2024 TechFlow. All rights reserved.</p>
-                <div class="footer-socials">
-                    <a href="#" aria-label="Facebook">f</a>
-                    <a href="#" aria-label="Twitter">𝕏</a>
-                    <a href="#" aria-label="LinkedIn">in</a>
-                    <a href="#" aria-label="GitHub">⌘</a>
-                </div>
-            </div>
+            <div class="footer-logo">💕 Made with love</div>
+            <p>
+                Được tạo với tất cả tình yêu <span class="footer-heart">❤️</span> dành riêng cho em
+            </p>
+            <p style="margin-top: 8px; font-size: 13px; opacity: 0.6;">
+                Happy Vietnamese Women's Day — 20/10/2024
+            </p>
         </div>
     </footer>
 
-    <!-- ===== JAVASCRIPT ===== -->
+    <!-- MUSIC BUTTON -->
+    <button class="music-toggle" id="musicBtn" title="Bật/tắt nhạc">🎵</button>
+
     <script>
-        // Navbar scroll effect
+        // ===== NAVBAR SCROLL =====
         const navbar = document.getElementById('navbar');
         window.addEventListener('scroll', () => {
             navbar.classList.toggle('scrolled', window.scrollY > 50);
         });
 
-        // Mobile menu toggle
+        // ===== MOBILE MENU =====
         const mobileToggle = document.getElementById('mobileToggle');
         const navLinks = document.getElementById('navLinks');
-        mobileToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
-
-        // Close mobile menu on link click
+        mobileToggle.addEventListener('click', () => navLinks.classList.toggle('active'));
         navLinks.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => navLinks.classList.remove('active'));
         });
 
-        // Scroll reveal animation
+        // ===== SCROLL REVEAL =====
         const revealElements = document.querySelectorAll('.reveal');
         const revealOnScroll = () => {
             revealElements.forEach(el => {
-                const rect = el.getBoundingClientRect();
-                if (rect.top < window.innerHeight - 80) {
+                if (el.getBoundingClientRect().top < window.innerHeight - 60) {
                     el.classList.add('active');
                 }
             });
@@ -1048,53 +870,135 @@
         window.addEventListener('scroll', revealOnScroll);
         window.addEventListener('load', revealOnScroll);
 
-        // Smooth scroll for anchor links
+        // ===== SMOOTH SCROLL =====
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
+            anchor.addEventListener('click', function(e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
+                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
             });
         });
 
-        // Animate chart bars on load
-        window.addEventListener('load', () => {
-            document.querySelectorAll('.chart-bar').forEach((bar, i) => {
-                bar.style.opacity = '0';
-                bar.style.transform = 'scaleY(0)';
-                bar.style.transformOrigin = 'bottom';
+        // ===== FALLING PETALS =====
+        const petalsContainer = document.getElementById('petalsContainer');
+        const petalTypes = ['🌸', '🌺', '🌹', '💮', '🏵️', '🌷'];
+        function createPetal() {
+            const petal = document.createElement('div');
+            petal.className = 'petal';
+            petal.textContent = petalTypes[Math.floor(Math.random() * petalTypes.length)];
+            petal.style.left = Math.random() * 100 + 'vw';
+            petal.style.fontSize = (16 + Math.random() * 20) + 'px';
+            petal.style.animationDuration = (6 + Math.random() * 8) + 's';
+            petal.style.animationDelay = Math.random() * 2 + 's';
+            petalsContainer.appendChild(petal);
+            setTimeout(() => petal.remove(), 16000);
+        }
+        setInterval(createPetal, 800);
+
+        // ===== FLOATING HEARTS =====
+        const heartsContainer = document.getElementById('heartsContainer');
+        const heartTypes = ['💕', '💗', '💖', '💓', '❤️', '🩷'];
+        function createFloatingHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'floating-heart';
+            heart.textContent = heartTypes[Math.floor(Math.random() * heartTypes.length)];
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.fontSize = (14 + Math.random() * 18) + 'px';
+            heart.style.animationDuration = (6 + Math.random() * 6) + 's';
+            heart.style.animationDelay = Math.random() * 3 + 's';
+            heartsContainer.appendChild(heart);
+            setTimeout(() => heart.remove(), 14000);
+        }
+        setInterval(createFloatingHeart, 2000);
+
+        // ===== HEART EXPLOSION ON CTA =====
+        function createHeartExplosion() {
+            for (let i = 0; i < 30; i++) {
                 setTimeout(() => {
-                    bar.style.transition = 'all 0.5s ease';
-                    bar.style.opacity = '1';
-                    bar.style.transform = 'scaleY(1)';
-                }, 200 + i * 100);
-            });
+                    const heart = document.createElement('div');
+                    heart.style.cssText = `
+                        position: fixed;
+                        z-index: 99999;
+                        font-size: ${20 + Math.random() * 30}px;
+                        pointer-events: none;
+                        left: 50%;
+                        top: 50%;
+                        transition: all ${1 + Math.random() * 2}s ease-out;
+                        opacity: 1;
+                    `;
+                    heart.textContent = heartTypes[Math.floor(Math.random() * heartTypes.length)];
+                    document.body.appendChild(heart);
+                    requestAnimationFrame(() => {
+                        const angle = (Math.PI * 2 / 30) * i;
+                        const distance = 100 + Math.random() * 300;
+                        heart.style.transform = `translate(${Math.cos(angle) * distance}px, ${Math.sin(angle) * distance}px) scale(0) rotate(${Math.random() * 360}deg)`;
+                        heart.style.opacity = '0';
+                    });
+                    setTimeout(() => heart.remove(), 3000);
+                }, i * 50);
+            }
+        }
+
+        // ===== MUSIC PLAYER =====
+        const musicBtn = document.getElementById('musicBtn');
+        let audioContext, isPlaying = false;
+
+        musicBtn.addEventListener('click', () => {
+            if (!audioContext) {
+                audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            }
+            isPlaying = !isPlaying;
+            musicBtn.classList.toggle('playing', isPlaying);
+            musicBtn.textContent = isPlaying ? '🎶' : '🎵';
+
+            if (isPlaying) {
+                playMelody();
+            }
         });
 
-        // Counter animation for stats
-        const animateCounters = () => {
-            document.querySelectorAll('.hero-stat h3').forEach(counter => {
-                const text = counter.textContent;
-                if (counter.dataset.animated) return;
-                const rect = counter.getBoundingClientRect();
-                if (rect.top > window.innerHeight) return;
-                counter.dataset.animated = 'true';
-                
-                if (text.includes('K+')) {
-                    let count = 0;
-                    const target = parseInt(text);
-                    const timer = setInterval(() => {
-                        count += Math.ceil(target / 50);
-                        if (count >= target) { count = target; clearInterval(timer); }
-                        counter.textContent = count + 'K+';
-                    }, 30);
+        function playMelody() {
+            if (!isPlaying || !audioContext) return;
+            // Simple romantic melody notes (frequencies)
+            const melody = [
+                { freq: 523.25, dur: 0.4 }, // C5
+                { freq: 587.33, dur: 0.4 }, // D5
+                { freq: 659.25, dur: 0.6 }, // E5
+                { freq: 587.33, dur: 0.4 }, // D5
+                { freq: 523.25, dur: 0.6 }, // C5
+                { freq: 493.88, dur: 0.4 }, // B4
+                { freq: 523.25, dur: 0.8 }, // C5
+                { freq: 0, dur: 0.3 },       // rest
+                { freq: 659.25, dur: 0.4 }, // E5
+                { freq: 698.46, dur: 0.4 }, // F5
+                { freq: 783.99, dur: 0.6 }, // G5
+                { freq: 698.46, dur: 0.4 }, // F5
+                { freq: 659.25, dur: 0.6 }, // E5
+                { freq: 587.33, dur: 0.4 }, // D5
+                { freq: 523.25, dur: 0.8 }, // C5
+            ];
+            let time = audioContext.currentTime + 0.1;
+            melody.forEach(note => {
+                if (note.freq > 0) {
+                    const osc = audioContext.createOscillator();
+                    const gain = audioContext.createGain();
+                    osc.type = 'sine';
+                    osc.frequency.value = note.freq;
+                    gain.gain.setValueAtTime(0.15, time);
+                    gain.gain.exponentialRampToValueAtTime(0.01, time + note.dur * 0.9);
+                    osc.connect(gain);
+                    gain.connect(audioContext.destination);
+                    osc.start(time);
+                    osc.stop(time + note.dur);
                 }
+                time += note.dur;
             });
-        };
-        window.addEventListener('scroll', animateCounters);
-        window.addEventListener('load', animateCounters);
+            // Loop
+            setTimeout(() => playMelody(), (time - audioContext.currentTime) * 1000 + 500);
+        }
+
+        // Initial petals & hearts burst
+        for (let i = 0; i < 8; i++) setTimeout(createPetal, i * 200);
+        for (let i = 0; i < 4; i++) setTimeout(createFloatingHeart, i * 500);
     </script>
 </body>
 </html>
