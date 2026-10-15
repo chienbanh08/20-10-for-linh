@@ -9,35 +9,36 @@
     <style>
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
+        [id] { scroll-margin-top: 88px; }
         body {
             font-family: 'Inter', sans-serif;
-            color: #3d2c2c;
+            color: #29485f;
             line-height: 1.6;
-            background: #fff9f9;
+            background: #f4fbfd;
             overflow-x: hidden;
         }
         a { text-decoration: none; color: inherit; }
         ul { list-style: none; }
 
         :root {
-            --rose: #e74c6f;
-            --rose-dark: #c73a5a;
-            --rose-light: #fce4ec;
-            --pink: #f48fb1;
-            --blush: #fff0f3;
-            --gold: #d4a574;
-            --gold-light: #f5e6d3;
-            --deep: #5c2434;
-            --text: #4a2c3d;
-            --text-light: #8b6976;
+            --rose: #168aad;
+            --rose-dark: #126782;
+            --rose-light: #d9f1f8;
+            --pink: #55bfd6;
+            --blush: #eefaff;
+            --gold: #64b6cd;
+            --gold-light: #e0f4f8;
+            --deep: #123b5d;
+            --text: #29485f;
+            --text-light: #66849a;
             --white: #ffffff;
-            --gradient: linear-gradient(135deg, #e74c6f 0%, #f48fb1 50%, #d4a574 100%);
-            --gradient-soft: linear-gradient(135deg, #fce4ec 0%, #fff0f3 50%, #f5e6d3 100%);
-            --shadow: 0 10px 40px rgba(231, 76, 111, 0.15);
+            --gradient: linear-gradient(135deg, #168aad 0%, #48b9d2 50%, #8bd3e6 100%);
+            --gradient-soft: linear-gradient(135deg, #dff4fb 0%, #effbff 50%, #e4f7fb 100%);
+            --shadow: 0 10px 40px rgba(22, 138, 173, 0.15);
             --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 3; }
 
         /* ===== FALLING PETALS ===== */
         .petals-container {
@@ -45,7 +46,7 @@
             top: 0; left: 0;
             width: 100%; height: 100%;
             pointer-events: none;
-            z-index: 9999;
+            z-index: 2;
             overflow: hidden;
         }
         .petal {
@@ -69,8 +70,115 @@
             bottom: 0; left: 0;
             width: 100%; height: 100%;
             pointer-events: none;
-            z-index: 9998;
+            z-index: 2;
             overflow: hidden;
+        }
+        .fish-container {
+            position: fixed;
+            inset: 0;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 2;
+        }
+        .swimming-fish {
+            position: absolute;
+            left: 0;
+            font-size: 42px;
+            opacity: 0.3;
+            filter: hue-rotate(145deg) saturate(0.7) drop-shadow(0 5px 8px rgba(22, 138, 173, 0.18));
+            animation: fishSwimRight 26s linear infinite;
+        }
+        .swimming-fish:nth-child(1) {
+            top: 18%;
+            animation-delay: -7s;
+        }
+        .swimming-fish:nth-child(2) {
+            top: 62%;
+            left: auto;
+            right: 0;
+            font-size: 32px;
+            opacity: 0.26;
+            animation: fishSwimLeft 31s linear infinite;
+            animation-delay: -12s;
+        }
+        .swimming-fish:nth-child(3) {
+            top: 36%;
+            font-size: 25px;
+            opacity: 0.24;
+            animation: fishSwimUp 35s linear infinite;
+            animation-delay: -20s;
+        }
+        .swimming-fish:nth-child(4) {
+            top: 78%;
+            left: auto;
+            right: 0;
+            font-size: 36px;
+            opacity: 0.22;
+            animation: fishSwimDown 29s linear infinite;
+            animation-delay: -8s;
+        }
+        .swimming-fish:nth-child(5) {
+            top: 48%;
+            font-size: 30px;
+            opacity: 0.22;
+            animation-duration: 33s;
+            animation-delay: -18s;
+        }
+        .swimming-fish:nth-child(6) {
+            top: 30%;
+            left: auto;
+            right: 0;
+            font-size: 38px;
+            opacity: 0.24;
+            animation-name: fishSwimLeft;
+            animation-duration: 37s;
+            animation-delay: -25s;
+        }
+        .swimming-fish:nth-child(7) {
+            top: 72%;
+            font-size: 28px;
+            opacity: 0.2;
+            animation-name: fishSwimUp;
+            animation-duration: 39s;
+            animation-delay: -11s;
+        }
+        .swimming-fish:nth-child(8) {
+            top: 54%;
+            left: auto;
+            right: 0;
+            font-size: 34px;
+            opacity: 0.22;
+            animation-name: fishSwimDown;
+            animation-duration: 35s;
+            animation-delay: -22s;
+        }
+        @keyframes fishSwimRight {
+            0% { transform: translate3d(-12vw, 0, 0) scaleX(-1) rotate(-4deg); }
+            25% { transform: translate3d(22vw, 12vh, 0) scaleX(-1) rotate(5deg); }
+            50% { transform: translate3d(54vw, -7vh, 0) scaleX(-1) rotate(-3deg); }
+            75% { transform: translate3d(88vw, 8vh, 0) scaleX(-1) rotate(4deg); }
+            100% { transform: translate3d(112vw, -3vh, 0) scaleX(-1) rotate(-3deg); }
+        }
+        @keyframes fishSwimLeft {
+            0% { transform: translate3d(12vw, 0, 0) rotate(-3deg); }
+            25% { transform: translate3d(-20vw, -9vh, 0) rotate(4deg); }
+            50% { transform: translate3d(-52vw, 7vh, 0) rotate(-4deg); }
+            75% { transform: translate3d(-84vw, -5vh, 0) rotate(3deg); }
+            100% { transform: translate3d(-112vw, 4vh, 0) rotate(-3deg); }
+        }
+        @keyframes fishSwimUp {
+            0% { transform: translate3d(-12vw, 8vh, 0) scaleX(-1) rotate(-8deg); }
+            25% { transform: translate3d(28vw, -4vh, 0) scaleX(-1) rotate(5deg); }
+            50% { transform: translate3d(56vw, -16vh, 0) scaleX(-1) rotate(-5deg); }
+            75% { transform: translate3d(86vw, -8vh, 0) scaleX(-1) rotate(6deg); }
+            100% { transform: translate3d(112vw, -18vh, 0) scaleX(-1) rotate(-4deg); }
+        }
+        @keyframes fishSwimDown {
+            0% { transform: translate3d(12vw, -10vh, 0) rotate(5deg); }
+            25% { transform: translate3d(-20vw, 2vh, 0) rotate(-5deg); }
+            50% { transform: translate3d(-52vw, 12vh, 0) rotate(4deg); }
+            75% { transform: translate3d(-84vw, 4vh, 0) rotate(-6deg); }
+            100% { transform: translate3d(-112vw, 16vh, 0) rotate(4deg); }
         }
         .floating-heart {
             position: absolute;
@@ -95,9 +203,9 @@
             transition: var(--transition);
         }
         .navbar.scrolled {
-            background: rgba(255,249,249,0.95);
+            background: rgba(244,251,253,0.95);
             backdrop-filter: blur(20px);
-            box-shadow: 0 2px 20px rgba(231,76,111,0.1);
+            box-shadow: 0 2px 20px rgba(22,138,173,0.1);
             padding: 10px 0;
         }
         .navbar .container { display: flex; align-items: center; justify-content: space-between; }
@@ -125,6 +233,7 @@
             background: none;
             border: none;
             cursor: pointer;
+            padding: 8px;
         }
         .mobile-toggle span { width: 24px; height: 2px; background: var(--text); transition: var(--transition); }
 
@@ -145,7 +254,7 @@
             position: absolute;
             top: -200px; right: -200px;
             width: 600px; height: 600px;
-            background: radial-gradient(circle, rgba(231,76,111,0.08) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(22,138,173,0.1) 0%, transparent 70%);
             border-radius: 50%;
         }
         .hero::after {
@@ -153,15 +262,15 @@
             position: absolute;
             bottom: -150px; left: -150px;
             width: 500px; height: 500px;
-            background: radial-gradient(circle, rgba(244,143,177,0.1) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(85,191,214,0.14) 0%, transparent 70%);
             border-radius: 50%;
         }
-        .hero-content { position: relative; z-index: 1; max-width: 750px; }
+        .hero-content { position: relative; z-index: 3; max-width: 750px; }
         .hero-date {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: rgba(231,76,111,0.1);
+            background: rgba(22,138,173,0.1);
             color: var(--rose);
             padding: 10px 24px;
             border-radius: 50px;
@@ -194,6 +303,28 @@
             margin-bottom: 24px;
             color: var(--deep);
         }
+        .hero-title::before, .hero-title::after {
+            content: '🐠';
+            display: inline-block;
+            margin: 0 0.16em;
+            font-family: sans-serif;
+            font-size: 0.52em;
+            vertical-align: 0.14em;
+            -webkit-text-fill-color: initial;
+        }
+        .hero-title::before {
+            transform: scaleX(-1);
+            animation: fishIconSwimLeft 2.4s ease-in-out infinite alternate;
+        }
+        .hero-title::after { animation: fishIconSwimRight 2.4s ease-in-out infinite alternate; }
+        @keyframes fishIconSwimLeft {
+            from { transform: scaleX(-1) translateX(-2px); }
+            to { transform: scaleX(-1) translateX(2px) translateY(-3px); }
+        }
+        @keyframes fishIconSwimRight {
+            from { transform: translateX(-2px); }
+            to { transform: translateX(2px) translateY(-3px); }
+        }
         .hero-title .highlight {
             font-family: 'Dancing Script', cursive;
             background: var(--gradient);
@@ -222,12 +353,12 @@
             border: none;
             cursor: pointer;
             transition: var(--transition);
-            box-shadow: 0 6px 25px rgba(231,76,111,0.4);
+            box-shadow: 0 6px 25px rgba(22,138,173,0.3);
             font-family: inherit;
         }
         .hero-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 10px 35px rgba(231,76,111,0.5);
+            box-shadow: 0 10px 35px rgba(22,138,173,0.4)
         }
 
         /* ===== SECTION COMMON ===== */
@@ -259,9 +390,9 @@
             background: var(--white);
             border-radius: 24px;
             padding: 50px 44px;
-            box-shadow: 0 15px 50px rgba(231,76,111,0.1);
+            box-shadow: 0 15px 50px rgba(22,138,173,0.1);
             position: relative;
-            border: 1px solid rgba(231,76,111,0.08);
+            border: 1px solid rgba(22,138,173,0.08);
         }
         .letter-card::before {
             content: '💌';
@@ -303,7 +434,7 @@
             padding: 36px 28px;
             text-align: center;
             transition: var(--transition);
-            border: 1px solid rgba(231,76,111,0.06);
+            border: 1px solid rgba(22,138,173,0.06);
             position: relative;
             overflow: hidden;
         }
@@ -370,7 +501,7 @@
             border-radius: 50%;
             border: 4px solid var(--blush);
             z-index: 1;
-            box-shadow: 0 0 0 4px rgba(231,76,111,0.2);
+            box-shadow: 0 0 0 4px rgba(22,138,173,0.18);
         }
         .timeline-content { width: 50%; }
         .timeline-date {
@@ -409,7 +540,7 @@
             align-items: flex-start;
             gap: 16px;
             transition: var(--transition);
-            border: 1px solid rgba(231,76,111,0.06);
+            border: 1px solid rgba(22,138,173,0.06);
         }
         .wish-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
         .wish-emoji {
@@ -542,17 +673,22 @@
             font-size: 24px;
             cursor: pointer;
             z-index: 10000;
-            box-shadow: 0 4px 20px rgba(231,76,111,0.4);
+            box-shadow: 0 4px 20px rgba(22,138,173,0.35);
             transition: var(--transition);
             display: flex;
             align-items: center;
             justify-content: center;
         }
         .music-toggle:hover { transform: scale(1.1); }
+        .music-toggle:focus-visible, .mobile-toggle:focus-visible, .hero-btn:focus-visible,
+        .cta-btn:focus-visible, .nav-links a:focus-visible {
+            outline: 3px solid var(--deep);
+            outline-offset: 4px;
+        }
         .music-toggle.playing { animation: musicPulse 1s ease-in-out infinite; }
         @keyframes musicPulse {
-            0%, 100% { box-shadow: 0 4px 20px rgba(231,76,111,0.4); }
-            50% { box-shadow: 0 4px 30px rgba(231,76,111,0.7); }
+            0%, 100% { box-shadow: 0 4px 20px rgba(22,138,173,0.35); }
+            50% { box-shadow: 0 4px 30px rgba(22,138,173,0.6); }
         }
 
         /* ===== SCROLL REVEAL ===== */
@@ -594,27 +730,55 @@
         @media (max-width: 480px) {
             .reasons-grid, .gallery-grid { grid-template-columns: 1fr; }
             .hero { padding: 100px 20px 60px; }
+            .music-toggle { right: 16px; bottom: 16px; width: 50px; height: 50px; }
+            .letter-card { padding: 34px 22px; }
+            .letter-greeting { font-size: 28px; }
+            .section-title { font-size: clamp(26px, 8vw, 34px); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                scroll-behavior: auto !important;
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+            .swimming-fish {
+                animation-duration: 38s !important;
+                animation-iteration-count: infinite !important;
+            }
         }
     </style>
 </head>
 <body>
 
     <!-- FALLING PETALS -->
-    <div class="petals-container" id="petalsContainer"></div>
+    <div class="petals-container" id="petalsContainer" aria-hidden="true"></div>
     <!-- FLOATING HEARTS -->
-    <div class="hearts-container" id="heartsContainer"></div>
+    <div class="hearts-container" id="heartsContainer" aria-hidden="true"></div>
+    <!-- SWIMMING PISCES FISH -->
+    <div class="fish-container" aria-hidden="true">
+        <span class="swimming-fish">🐠</span>
+        <span class="swimming-fish">🐟</span>
+        <span class="swimming-fish">🐠</span>
+        <span class="swimming-fish">🐟</span>
+        <span class="swimming-fish">🐡</span>
+        <span class="swimming-fish">🐠</span>
+        <span class="swimming-fish">🐟</span>
+        <span class="swimming-fish">🐡</span>
+    </div>
 
     <!-- NAVBAR -->
     <nav class="navbar" id="navbar">
         <div class="container">
-            <a href="#" class="logo">💕 For You</a>
+            <a href="#hero" class="logo">💕 For Linh</a>
             <div class="nav-links" id="navLinks">
                 <a href="#letter">Thư tình</a>
                 <a href="#reasons">Lý do yêu em</a>
                 <a href="#timeline">Kỷ niệm</a>
+                <a href="#quotes">Lời yêu</a>
                 <a href="#wishes">Lời chúc</a>
             </div>
-            <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Mở menu" aria-controls="navLinks" aria-expanded="false">
                 <span></span><span></span><span></span>
             </button>
         </div>
@@ -623,10 +787,10 @@
     <!-- HERO -->
     <section class="hero" id="hero">
         <div class="hero-content">
-            <div class="hero-date">🌹 Ngày Phụ nữ Việt Nam — 20/10</div>
-            <div class="hero-emoji">💝</div>
+            <div class="hero-date">🌊 Ngày Phụ nữ Việt Nam — 20/10</div>
+
             <h1 class="hero-title">
-                Gửi đến <span class="highlight">người anh yêu</span> nhất
+                <span class="highlight">Gửi đến người anh yêu nhất</span>
             </h1>
             <p class="hero-subtitle">
                 "Em là điều tuyệt vời nhất đã đến trong cuộc đời anh.<br>
@@ -644,14 +808,14 @@
                 <h2 class="section-title">Lá thư anh viết cho em 💌</h2>
             </div>
             <div class="letter-card reveal">
-                <div class="letter-greeting">Em yêu của anh,</div>
+                <div class="letter-greeting">Em Bé của anh,</div>
                 <div class="letter-body">
                     <p>Nhân ngày 20/10 — Ngày Phụ nữ Việt Nam, anh muốn dành những lời chân thành nhất gửi đến em — người con gái đặc biệt nhất trong cuộc đời anh.</p>
-                    <p>Cảm ơn em đã luôn ở bên anh, trong những ngày nắng đẹp lẫn những ngày mưa bão. Cảm ơn em vì mỗi nụ cười, mỗi cái nắm tay, mỗi khoảnh khắc bên nhau — tất cả đều là những món quà vô giá mà anh trân trọng.</p>
-                    <p>Em không cần phải hoàn hảo, vì với anh, em đã là tất cả. Em là bình yên giữa những bộn bề, là niềm vui giữa những muộn phiền, là động lực để anh cố gắng mỗi ngày.</p>
+                    <p>Cảm ơn em đã luôn ở bên anh, trong những lúc gian nan cũng như hạnh phúc. Cảm ơn em vì mỗi nụ cười, những giọt nước mắt mỗi cái nắm tay, mỗi khoảnh khắc bên nhau — tất cả đều là những món quà vô giá mà anh tôn thờ.</p>
+                    <p>Em không cần phải hoàn hảo, vì với anh, em đã là tất cả. Em là nơi bình yên giữa những bộn bề, là nơi để anh nhìn vào mà cảm thấy an toàn, là động lực để anh cố gắng mỗi ngày.</p>
                     <p>Anh chúc em ngày 20/10 thật nhiều niềm vui, thật nhiều yêu thương. Hôm nay và mãi mãi, anh sẽ luôn yêu em! 💕</p>
                 </div>
-                <div class="letter-sign">Mãi yêu em, Anh ❤️</div>
+                <div class="letter-sign">Mãi yêu Em, Péo ❤️</div>
             </div>
         </div>
     </section>
@@ -713,7 +877,7 @@
                     <div class="timeline-content">
                         <div class="timeline-date">Ngày đầu tiên 🌸</div>
                         <h3>Lần đầu gặp em</h3>
-                        <p>Anh vẫn nhớ cảm giác hôm đó — trái tim đập nhanh hơn, thế giới bỗng đẹp hơn khi có em.</p>
+                        <p>Anh vẫn nhớ cảm giác hôm đó — trái tim đập nhanh hơn, thế giới bỗng đẹp hơn khi mất xe.</p>
                     </div>
                 </div>
                 <div class="timeline-item reveal">
@@ -721,7 +885,7 @@
                     <div class="timeline-content">
                         <div class="timeline-date">Ngày đặc biệt 💑</div>
                         <h3>Chính thức bên nhau</h3>
-                        <p>Ngày anh nói "Anh yêu em" và em gật đầu — khoảnh khắc đẹp nhất cuộc đời anh.</p>
+                        <p>Ngày em nói "Em yêu anh" — khoảnh khắc đẹp nhất cuộc đời anh.</p>
                     </div>
                 </div>
                 <div class="timeline-item reveal">
@@ -729,7 +893,7 @@
                     <div class="timeline-content">
                         <div class="timeline-date">Mỗi ngày 🌈</div>
                         <h3>Những ngày bên nhau</h3>
-                        <p>Cùng nhau ăn, cùng nhau đi dạo, cùng nhau cười — những điều giản dị nhưng hạnh phúc nhất.</p>
+                        <p>Cùng nhau ăn, cùng nhau đi chơi, cùng nhau cười — những điều giản dị nhưng hạnh phúc nhất.</p>
                     </div>
                 </div>
                 <div class="timeline-item reveal">
@@ -819,7 +983,9 @@
             <h2 class="section-title">Happy 20/10, em yêu!</h2>
             <p class="section-desc">
                 Cảm ơn em đã đến bên anh và khiến cuộc sống trở nên ý nghĩa hơn bao giờ hết.
-                Anh yêu em — hôm nay, ngày mai và mãi mãi! 🌹
+
+                Anh yêu em — hiện tai, quá khứ, mãi về sau! 🌹
+
             </p>
             <button class="cta-btn" onclick="createHeartExplosion()">
                 💕 Nhấn để nhận trái tim
@@ -835,13 +1001,14 @@
                 Được tạo với tất cả tình yêu <span class="footer-heart">❤️</span> dành riêng cho em
             </p>
             <p style="margin-top: 8px; font-size: 13px; opacity: 0.6;">
-                Happy Vietnamese Women's Day — 20/10/2024
+                Chúc mừng Ngày Phụ nữ Việt Nam — 20/10
             </p>
         </div>
     </footer>
 
     <!-- MUSIC BUTTON -->
-    <button class="music-toggle" id="musicBtn" title="Bật/tắt nhạc">🎵</button>
+    <audio id="backgroundMusic" src="Shane%20Filan%20-%20Beautiful%20In%20White%20(Official%20Video).mp3" preload="none" loop></audio>
+    <button class="music-toggle" id="musicBtn" type="button" title="Bật nhạc nền" aria-label="Bật nhạc nền" aria-pressed="false">🎵</button>
 
     <script>
         // ===== NAVBAR SCROLL =====
@@ -853,9 +1020,19 @@
         // ===== MOBILE MENU =====
         const mobileToggle = document.getElementById('mobileToggle');
         const navLinks = document.getElementById('navLinks');
-        mobileToggle.addEventListener('click', () => navLinks.classList.toggle('active'));
+        const setMobileMenuOpen = (isOpen) => {
+            navLinks.classList.toggle('active', isOpen);
+            mobileToggle.setAttribute('aria-expanded', String(isOpen));
+            mobileToggle.setAttribute('aria-label', isOpen ? 'Đóng menu' : 'Mở menu');
+        };
+        mobileToggle.addEventListener('click', () => {
+            setMobileMenuOpen(mobileToggle.getAttribute('aria-expanded') !== 'true');
+        });
         navLinks.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => navLinks.classList.remove('active'));
+            link.addEventListener('click', () => setMobileMenuOpen(false));
+        });
+        document.addEventListener('keydown', event => {
+            if (event.key === 'Escape') setMobileMenuOpen(false);
         });
 
         // ===== SCROLL REVEAL =====
@@ -882,6 +1059,7 @@
         // ===== FALLING PETALS =====
         const petalsContainer = document.getElementById('petalsContainer');
         const petalTypes = ['🌸', '🌺', '🌹', '💮', '🏵️', '🌷'];
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         function createPetal() {
             const petal = document.createElement('div');
             petal.className = 'petal';
@@ -893,7 +1071,6 @@
             petalsContainer.appendChild(petal);
             setTimeout(() => petal.remove(), 16000);
         }
-        setInterval(createPetal, 800);
 
         // ===== FLOATING HEARTS =====
         const heartsContainer = document.getElementById('heartsContainer');
@@ -909,10 +1086,15 @@
             heartsContainer.appendChild(heart);
             setTimeout(() => heart.remove(), 14000);
         }
-        setInterval(createFloatingHeart, 2000);
+
+        if (!prefersReducedMotion) {
+            setInterval(createPetal, 1800);
+            setInterval(createFloatingHeart, 4000);
+        }
 
         // ===== HEART EXPLOSION ON CTA =====
         function createHeartExplosion() {
+            if (prefersReducedMotion) return;
             for (let i = 0; i < 30; i++) {
                 setTimeout(() => {
                     const heart = document.createElement('div');
@@ -941,64 +1123,37 @@
 
         // ===== MUSIC PLAYER =====
         const musicBtn = document.getElementById('musicBtn');
-        let audioContext, isPlaying = false;
-
-        musicBtn.addEventListener('click', () => {
-            if (!audioContext) {
-                audioContext = new (window.AudioContext || window.webkitAudioContext)();
-            }
-            isPlaying = !isPlaying;
+        const backgroundMusic = document.getElementById('backgroundMusic');
+        const setMusicPlaying = (isPlaying) => {
             musicBtn.classList.toggle('playing', isPlaying);
             musicBtn.textContent = isPlaying ? '🎶' : '🎵';
+            musicBtn.setAttribute('aria-pressed', String(isPlaying));
+            musicBtn.setAttribute('aria-label', isPlaying ? 'Tắt nhạc nền' : 'Bật nhạc nền');
+            musicBtn.title = isPlaying ? 'Tắt nhạc nền' : 'Bật nhạc nền';
+        };
 
-            if (isPlaying) {
-                playMelody();
+        musicBtn.addEventListener('click', async () => {
+            if (!backgroundMusic.paused) {
+                backgroundMusic.pause();
+                setMusicPlaying(false);
+                return;
+            }
+            try {
+                await backgroundMusic.play();
+                setMusicPlaying(true);
+            } catch (error) {
+                setMusicPlaying(false);
+                musicBtn.title = 'Không phát được nhạc. Kiểm tra file MP3.';
+                musicBtn.setAttribute('aria-label', musicBtn.title);
+                console.error('Không thể phát nhạc nền:', error);
             }
         });
 
-        function playMelody() {
-            if (!isPlaying || !audioContext) return;
-            // Simple romantic melody notes (frequencies)
-            const melody = [
-                { freq: 523.25, dur: 0.4 }, // C5
-                { freq: 587.33, dur: 0.4 }, // D5
-                { freq: 659.25, dur: 0.6 }, // E5
-                { freq: 587.33, dur: 0.4 }, // D5
-                { freq: 523.25, dur: 0.6 }, // C5
-                { freq: 493.88, dur: 0.4 }, // B4
-                { freq: 523.25, dur: 0.8 }, // C5
-                { freq: 0, dur: 0.3 },       // rest
-                { freq: 659.25, dur: 0.4 }, // E5
-                { freq: 698.46, dur: 0.4 }, // F5
-                { freq: 783.99, dur: 0.6 }, // G5
-                { freq: 698.46, dur: 0.4 }, // F5
-                { freq: 659.25, dur: 0.6 }, // E5
-                { freq: 587.33, dur: 0.4 }, // D5
-                { freq: 523.25, dur: 0.8 }, // C5
-            ];
-            let time = audioContext.currentTime + 0.1;
-            melody.forEach(note => {
-                if (note.freq > 0) {
-                    const osc = audioContext.createOscillator();
-                    const gain = audioContext.createGain();
-                    osc.type = 'sine';
-                    osc.frequency.value = note.freq;
-                    gain.gain.setValueAtTime(0.15, time);
-                    gain.gain.exponentialRampToValueAtTime(0.01, time + note.dur * 0.9);
-                    osc.connect(gain);
-                    gain.connect(audioContext.destination);
-                    osc.start(time);
-                    osc.stop(time + note.dur);
-                }
-                time += note.dur;
-            });
-            // Loop
-            setTimeout(() => playMelody(), (time - audioContext.currentTime) * 1000 + 500);
-        }
-
         // Initial petals & hearts burst
-        for (let i = 0; i < 8; i++) setTimeout(createPetal, i * 200);
-        for (let i = 0; i < 4; i++) setTimeout(createFloatingHeart, i * 500);
+        if (!prefersReducedMotion) {
+            for (let i = 0; i < 4; i++) setTimeout(createPetal, i * 350);
+            for (let i = 0; i < 2; i++) setTimeout(createFloatingHeart, i * 700);
+        }
     </script>
 </body>
 </html>
